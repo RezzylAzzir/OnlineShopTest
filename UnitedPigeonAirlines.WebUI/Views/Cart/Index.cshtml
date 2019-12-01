@@ -1,0 +1,54 @@
+﻿@model UnitedPigeonAirlines.WebUI.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "Uniated Pigeon Airlines : your cart";
+}
+    <style>
+        #cartTable td {
+            vertical-align: middle;
+        }
+    </style>
+<h2>Your Cart</h2>
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>Quanity</th>
+            <th>Pigeon</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Full Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Pigeon.PigeonName</td>
+                <td class="text-right">@line.Pigeon.BasicPrice.ToString("# UAH")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Pigeon.BasicPrice).ToString("# UAH"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("PigeonId", line.Pigeon.PigeonId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning" type="submit" value="Remove" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Summary:</td>
+            <td class="text-right">
+                @Model.Cart.ComputeTotalValue().ToString("# UAH")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

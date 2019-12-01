@@ -1,0 +1,17 @@
+﻿@using UnitedPigeonAirlines.WebUI.Models
+@using UnitedPigeonAirlines.WebUI.HtmlHelpers
+@model PigeonListViewModel
+
+@{
+    ViewBag.Title = "List of Pigeons";
+}
+
+@foreach (var p in @Model.Pigeons)
+{
+    @Html.Partial("PigeonSummary", p)
+}
+
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+            new { page = x, category = Model.CurrentCategory }))
+    </div>
