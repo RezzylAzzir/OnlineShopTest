@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Uniated Pigeon Airlines : your cart";
 }
-    <style>
-        #cartTable td {
-            vertical-align: middle;
-        }
-    </style>
+<style>
+    #cartTable td {
+        vertical-align: middle;
+    }
+</style>
 <h2>Your Cart</h2>
 
 <table id="cartTable" class="table">
@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var line in Model.Cart.Lines)
+        @foreach (var line in Model.PigeonsInCart)
         {
             <tr>
                 <td class="text-center">@line.Quantity</td>
@@ -43,12 +43,19 @@
         <tr>
             <td colspan="3" class="text-right">Summary:</td>
             <td class="text-right">
-                @Model.Cart.ComputeTotalValue().ToString("# UAH")
+                @{decimal Subtotal = 0;}
+                @foreach (var line in Model.PigeonsInCart)
+                {
+                    Subtotal= Subtotal + line.Quantity * line.Pigeon.BasicPrice;
+}
+                @Subtotal.ToString("# UAH")
+
             </td>
         </tr>
     </tfoot>
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+    @Html.ActionLink("Checkout", "Checkout", null, new { @class = "btn btn-primary" })
 </div>

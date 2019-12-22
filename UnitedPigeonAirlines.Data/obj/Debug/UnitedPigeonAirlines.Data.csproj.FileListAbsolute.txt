@@ -1,0 +1,6 @@
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\bin\Debug\UnitedPigeonAirlines.Data.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\bin\Debug\UnitedPigeonAirlines.Data.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\obj\Debug\UnitedPigeonAirlines.Data.csprojAssemblyReference.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\obj\Debug\UnitedPigeonAirlines.Data.csproj.CoreCompileInputs.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\obj\Debug\UnitedPigeonAirlines.Data.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Data\obj\Debug\UnitedPigeonAirlines.Data.pdb

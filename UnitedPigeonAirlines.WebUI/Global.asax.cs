@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using UnitedPigeonAirlines.Domain.Entities;
 using UnitedPigeonAirlines.WebUI.Infrastructure.Binders;
+using UnitedPigeonAirlines.Data.Entities;
 
 namespace UnitedPigeonAirlines.WebUI
 {

@@ -1,18 +1,27 @@
-﻿@model UnitedPigeonAirlines.Domain.Entities.Pigeon
+﻿@model UnitedPigeonAirlines.Data.Entities.Pigeon
 
 
-    <div class="well">
-        <h3>
-            <strong>@Model.PigeonName</strong>
-            <span class="pull-right label label-primary">@Model.BasicPrice.ToString("# UAH")</span>
-        </h3>
-        @using (Html.BeginForm("AddToCart", "Cart"))
-        {
-            <div class="pull-right">
-                @Html.HiddenFor(x => x.PigeonId)
-                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                <input type="submit" class="btn btn-success" value="Add to Cart" />
-            </div>
-        }
-        <span class="lead">@Model.Description</span>
-    </div>
+<div class="well">
+    @if (Model.ImageData != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="150" height="150"
+                 src="@Url.Action("GetImage", "Pigeon",
+                new { Model.PigeonId })" />
+        </div>
+    }
+
+    <h3>
+        <strong>@Model.PigeonName</strong>
+        <span class="pull-right label label-primary">@Model.BasicPrice.ToString("# UAH")</span>
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.PigeonId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to cart" />
+        </div>
+    }
+    <span class="lead">@Model.Description</span>
+</div>

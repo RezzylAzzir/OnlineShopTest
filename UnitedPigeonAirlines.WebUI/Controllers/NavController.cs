@@ -4,21 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UnitedPigeonAirlines.Domain.Abstract;
+using UnitedPigeonAirlines.Domain.Concrete;
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
 {
     public class NavController : Controller
     {
-        private IPigeonRepository repository;
+        private EFPigeonRepository repository;
 
-        public NavController(IPigeonRepository repo)
+        public NavController(EFPigeonRepository repo)
         {
             repository = repo;
         }
 
         public PartialViewResult Menu()
         {
-            IEnumerable<string> categories = repository.Pigeons
+            IEnumerable<string> categories = repository.GetAllPigeons()
                 .Select(pigeon => pigeon.Category)
                 .Distinct()
                 .OrderBy(x => x);

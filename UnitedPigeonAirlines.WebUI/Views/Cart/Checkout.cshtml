@@ -1,0 +1,43 @@
+﻿@model UnitedPigeonAirlines.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "United Pigeon Airlines: Checkout";
+}
+
+<h2>Checkout Now</h2>
+<p>Input your contact data and we will ship your pigeons immedatly!</p>
+
+
+@using (Html.BeginForm())
+{
+    <h3>Data</h3>
+    <div class="form-group">
+        <label>Your Name:</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    @Html.ValidationSummary();
+    <h3>Checkout Address</h3>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+    }
+
+    <h3>Options</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            Do you want to Gift Wrap a cage?
+        </label>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Checkout" />
+    </div>
+}
+

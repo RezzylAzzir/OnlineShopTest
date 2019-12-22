@@ -86,3 +86,5 @@ C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\EntityFramework
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\UnitedPigeonAirlines.Domain.dll.config
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\EntityFramework.xml
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\EntityFramework.SqlServer.xml
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\UnitedPigeonAirlines.Data.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.WebUI\bin\UnitedPigeonAirlines.Data.pdb

@@ -23,3 +23,13 @@ C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\EntityFr
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\EntityFramework.xml
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\UnitedPigeonAirlines.Data.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\bin\Debug\UnitedPigeonAirlines.Data.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.First.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.csproj.GenerateResource.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Second.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Third.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Fourth.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Fifth.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Sixth.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.Domain\obj\Debug\UnitedPigeonAirlines.Domain.Migrations.Seventh.resources

@@ -1,4 +1,5 @@
 ﻿using UnitedPigeonAirlines.Domain.Entities;
+using UnitedPigeonAirlines.Data.Entities;
 using System.Web.Mvc;
 
 namespace UnitedPigeonAirlines.WebUI.Infrastructure.Binders
