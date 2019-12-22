@@ -1,11 +1,12 @@
 ﻿using System.Web.Mvc;
-using UnitedPigeonAirlines.Domain.Abstract;
-using UnitedPigeonAirlines.Domain.Entities;
+//using UnitedPigeonAirlines.Domain.Abstract;
+//using UnitedPigeonAirlines.Domain.Entities;
 using System.Linq;
 using System.Web;
 using UnitedPigeonAirlines.Data.Repositories;
-using UnitedPigeonAirlines.Domain.Concrete;
-using UnitedPigeonAirlines.Data.Entities;
+//using UnitedPigeonAirlines.Domain.Concrete;
+using UnitedPigeonAirlines.EF.Repositories;
+using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 using UnitedPigeonAirlines.WebUI.Models;
 
 namespace UnitedPigeonAirlines.WebUI.Controllers

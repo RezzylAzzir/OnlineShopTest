@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Text;
 using UnitedPigeonAirlines.Domain.Abstract;
-using UnitedPigeonAirlines.Domain.Entities;
+//using UnitedPigeonAirlines.Domain.Entities;
 using UnitedPigeonAirlines.Domain.Concrete;
 
 namespace UnitedPigeonAirlines.Domain.Concrete

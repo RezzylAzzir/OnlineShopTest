@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UnitedPigeonAirlines.Domain.Abstract;
-using UnitedPigeonAirlines.Domain.Entities;
+using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.WebUI.Models;
-using UnitedPigeonAirlines.Data.Repositories;
-using UnitedPigeonAirlines.Domain.Concrete;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
 {

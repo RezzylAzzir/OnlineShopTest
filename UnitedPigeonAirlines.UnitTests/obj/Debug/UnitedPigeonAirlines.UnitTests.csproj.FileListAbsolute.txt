@@ -48,3 +48,6 @@ C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\obj\Debug\Unite
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\obj\Debug\UnitedPigeonAirlines.UnitTests.pdb
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\bin\Debug\UnitedPigeonAirlines.Data.dll
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\bin\Debug\UnitedPigeonAirlines.Data.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\bin\Debug\UnitedPigeonAirlines.EF.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\bin\Debug\UnitedPigeonAirlines.EF.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.UnitTests\bin\Debug\UnitedPigeonAirlines.EF.dll.config

@@ -3,34 +3,34 @@ using System.Net.Mail;
 using System.Text;
 using UnitedPigeonAirlines.Domain.Concrete;
 using UnitedPigeonAirlines.Domain.Abstract;
-using UnitedPigeonAirlines.Domain.Entities;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 using System.Linq;
+using UnitedPigeonAirlines.EF.Repositories;
 using System.Data.Entity;
 using System.Collections.Generic;
 
 namespace UnitedPigeonAirlines.Domain.Concrete
 {
-    public class EmailOrderProcessor : IEmailOrderProcessor
+    public class EmailOrderProcessor : IOrderProcessor
     {
-        EFDbContext csontext;
+        //EFDbContext csontext;
         private EmailSettings emailSettings;
         EFPigeonRepository repository;
-        EFOrderRepository orepostiory;
+        //EFOrderRepository orepostiory;
        
 
-        public EmailOrderProcessor(EmailSettings settings, EFPigeonRepository repo, EFOrderRepository orepo, EFDbContext context)
+        public EmailOrderProcessor(EmailSettings settings, EFPigeonRepository repo /*,EFOrderRepository orepo, EFDbContext context*/)
         {
             emailSettings = settings;
             repository = repo;
-            orepostiory = orepo;
-            csontext = context;
+            //orepostiory = orepo;
+            //csontext = context;
         }
 
-        public void ProcessOrder(Order order, ShippingDetails shippingInfo, Cart cart)
+        public void ProcessOrder(Order order/*, ShippingDetails shippingInfo, Cart cart*/)
         {
             
-            order.OrderId = csontext.Orders.OrderByDescending(x=>x.OrderId).FirstOrDefault().OrderId;
+            //order.OrderId = csontext.Orders.OrderByDescending(x=>x.OrderId).FirstOrDefault().OrderId;
             //order.OrderId++;
             System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("ua-UA");
             using (var smtpClient = new SmtpClient())
@@ -54,17 +54,17 @@ namespace UnitedPigeonAirlines.Domain.Concrete
                     .AppendLine("New order is ready")
                     .AppendLine("---")
                     .AppendLine("Pigeons:");
-                order.Pigeons = new List<PigeonInOrder>();
-                foreach (var line in cart.lineCollection)
-                {
-                    order.Pigeons.Add(new PigeonInOrder()
-                    {
-                       PigeonId = line.PigeonId,
-                       OrderId = order.OrderId,
-                       Quantity = line.Quantity,
-                    });
+                //order.Pigeons = new List<PigeonInOrder>();
+                //foreach (var line in  cart.lineCollection)
+                //{
+                //    order.Pigeons.Add(new PigeonInOrder()
+                //    {
+                //       PigeonId = line.PigeonId,
+                //       //OrderId = order.OrderId,
+                //       Quantity = line.Quantity,
+                //    });
                     
-                }
+                //}
                 Dictionary<int, int> dictionary = new Dictionary<int, int>();
                 foreach (var pigeon in order.Pigeons)
                 {
@@ -85,15 +85,15 @@ namespace UnitedPigeonAirlines.Domain.Concrete
                 body.AppendFormat("Full Price: {0:c}", subtotal)
                     .AppendLine(";")
                     .AppendLine("Shippment:")
-                    .AppendLine(shippingInfo.Name)
-                    .AppendLine(shippingInfo.Line1)
-                    .AppendLine(shippingInfo.Line2 ?? "")
-                    .AppendLine(shippingInfo.Line3 ?? "")
-                    .AppendLine(shippingInfo.City)
-                    .AppendLine(shippingInfo.Country)
+                    .AppendLine(order.Name)
+                    .AppendLine(order.Line1)
+                    .AppendLine(order.Line2 ?? "")
+                    .AppendLine(order.Line3 ?? "")
+                    .AppendLine(order.City)
+                    .AppendLine(order.Country)
                     .AppendLine("---")
                     .AppendFormat("Gift Wrapping?: {0}",
-                        shippingInfo.GiftWrap ? "Yes" : "No");
+                        order.GiftWrap ? "Yes" : "No");
 
                 MailMessage mailMessage = new MailMessage(
                                        emailSettings.MailFromAddress,	// От кого

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UnitedPigeonAirlines.Domain.Entities;
 using UnitedPigeonAirlines.Domain.Abstract;
 using UnitedPigeonAirlines.WebUI.Models;
+using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.Domain.Concrete;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.CartAggregate;
+using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
@@ -15,13 +16,14 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
     public class CartController : Controller
     {
         private EFPigeonRepository repository;
-        private IEmailOrderProcessor orderProcessor;
-        private IDBOrderProcessor dbProcessor;
-        public CartController(EFPigeonRepository repo, IEmailOrderProcessor processor, IDBOrderProcessor dBOrderProcessor)
+        private EFOrderRepository orderRepository;
+        private IOrderProcessor orderProcessor;
+        public CartController(EFPigeonRepository repo,EFOrderRepository orepo, IOrderProcessor processor/*, IDBOrderProcessor dBOrderProcessor*/)
         {
             repository = repo;
+            orderRepository = orepo;
             orderProcessor = processor;
-            dbProcessor = dBOrderProcessor;
+            //dbProcessor = dBOrderProcessor;
         }
         public ViewResult Checkout()
         {
@@ -76,9 +78,17 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                orderProcessor.ProcessOrder(order, shippingDetails,cart);
-                dbProcessor.SaveOrder(cart, shippingDetails);
+                cart.FillOrder(order);
+                order.City = shippingDetails.City;
+                order.Country = shippingDetails.Country;
+                order.GiftWrap = shippingDetails.GiftWrap;
+                order.Line1 = shippingDetails.Line1;
+                order.Line2 = shippingDetails.Line2;
+                order.Line3 = shippingDetails.Line3;
+                order.Name = shippingDetails.Name;
+                orderProcessor.ProcessOrder(order);
+                orderRepository.SaveOrder(order);
+                //dbProcessor.SaveOrder(cart, shippingDetails);
                 cart.Clear();
                 return View("Completed");
             }

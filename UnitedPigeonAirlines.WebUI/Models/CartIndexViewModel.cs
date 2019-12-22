@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UnitedPigeonAirlines.Domain.Entities;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 
 namespace UnitedPigeonAirlines.WebUI.Models
 {

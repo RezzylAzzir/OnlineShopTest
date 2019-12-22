@@ -5,12 +5,12 @@ using System.Web.Mvc;
 using Moq;
 using Ninject;
 using UnitedPigeonAirlines.Domain.Abstract;
-using UnitedPigeonAirlines.Domain.Entities;
 using UnitedPigeonAirlines.Domain.Concrete;
 using UnitedPigeonAirlines.WebUI.Infrastructure.Abstract;
 using UnitedPigeonAirlines.WebUI.Infrastructure.Concrete;
 using System.Configuration;
 using UnitedPigeonAirlines.Data.Repositories;
+using UnitedPigeonAirlines.EF.Repositories;
 
 namespace UnitedPigeonAirlines.WebUI.Infrastructure
 {
@@ -44,9 +44,8 @@ namespace UnitedPigeonAirlines.WebUI.Infrastructure
                     .AppSettings["Email.WriteAsFile"] ?? "false")
             };
 
-            kernel.Bind<IEmailOrderProcessor>().To<EmailOrderProcessor>()
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
-            kernel.Bind<IDBOrderProcessor>().To<DBOrderProcessor>();
             kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
         }
     }

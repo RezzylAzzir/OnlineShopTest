@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using UnitedPigeonAirlines.Domain.Entities;
 using UnitedPigeonAirlines.WebUI.Infrastructure.Binders;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 
 namespace UnitedPigeonAirlines.WebUI
 {

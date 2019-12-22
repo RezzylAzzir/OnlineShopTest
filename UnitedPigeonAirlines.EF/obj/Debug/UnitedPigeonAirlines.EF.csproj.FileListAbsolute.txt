@@ -1,0 +1,17 @@
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\UnitedPigeonAirlines.EF.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\UnitedPigeonAirlines.EF.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.csprojAssemblyReference.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.csproj.CoreCompileInputs.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\UnitedPigeonAirlines.EF.dll.config
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\EntityFramework.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\EntityFramework.SqlServer.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\UnitedPigeonAirlines.Data.dll
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\UnitedPigeonAirlines.Data.pdb
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\EntityFramework.xml
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\bin\Debug\EntityFramework.SqlServer.xml
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.csproj.CopyComplete
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.Migrations.Edit1.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.csproj.GenerateResource.cache
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.Migrations.Edit2.resources

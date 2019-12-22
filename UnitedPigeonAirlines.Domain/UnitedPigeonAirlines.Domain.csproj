@@ -72,46 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IDBOrderProcessor.cs" />
-    <Compile Include="Abstract\IEmailOrderProcessor.cs" />
-    <Compile Include="Concrete\DBOrderProcessor.cs" />
-    <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\EFOrderRepository.cs" />
-    <Compile Include="Concrete\EFPigeonRepository.cs" />
+    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Concrete\EmailSettings.cs" />
-    <Compile Include="Entities\PigeonViewModel.cs" />
-    <Compile Include="Entities\PigeonDTO.cs" />
-    <Compile Include="Entities\ShippingDetails.cs" />
-    <Compile Include="Migrations\201912220041110_First.cs" />
-    <Compile Include="Migrations\201912220041110_First.designer.cs">
-      <DependentUpon>201912220041110_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220044465_Second.cs" />
-    <Compile Include="Migrations\201912220044465_Second.designer.cs">
-      <DependentUpon>201912220044465_Second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220057585_Third.cs" />
-    <Compile Include="Migrations\201912220057585_Third.designer.cs">
-      <DependentUpon>201912220057585_Third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220108496_Fourth.cs" />
-    <Compile Include="Migrations\201912220108496_Fourth.designer.cs">
-      <DependentUpon>201912220108496_Fourth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220110588_Fifth.cs" />
-    <Compile Include="Migrations\201912220110588_Fifth.designer.cs">
-      <DependentUpon>201912220110588_Fifth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220120018_Sixth.cs" />
-    <Compile Include="Migrations\201912220120018_Sixth.designer.cs">
-      <DependentUpon>201912220120018_Sixth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912220121171_Seventh.cs" />
-    <Compile Include="Migrations\201912220121171_Seventh.designer.cs">
-      <DependentUpon>201912220121171_Seventh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,30 +86,12 @@
       <Project>{93ce4e0f-96e1-4906-a2e5-6b11ae294933}</Project>
       <Name>UnitedPigeonAirlines.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UnitedPigeonAirlines.EF\UnitedPigeonAirlines.EF.csproj">
+      <Project>{e2e9b1e3-de84-4dad-b631-094919910e1b}</Project>
+      <Name>UnitedPigeonAirlines.EF</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912220041110_First.resx">
-      <DependentUpon>201912220041110_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220044465_Second.resx">
-      <DependentUpon>201912220044465_Second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220057585_Third.resx">
-      <DependentUpon>201912220057585_Third.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220108496_Fourth.resx">
-      <DependentUpon>201912220108496_Fourth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220110588_Fifth.resx">
-      <DependentUpon>201912220110588_Fifth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220120018_Sixth.resx">
-      <DependentUpon>201912220120018_Sixth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912220121171_Seventh.resx">
-      <DependentUpon>201912220121171_Seventh.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
