@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
+using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
 
 namespace UnitedPigeonAirlines.EF
 {

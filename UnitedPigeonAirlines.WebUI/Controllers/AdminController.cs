@@ -1,10 +1,6 @@
 ﻿using System.Web.Mvc;
-//using UnitedPigeonAirlines.Domain.Abstract;
-//using UnitedPigeonAirlines.Domain.Entities;
 using System.Linq;
 using System.Web;
-using UnitedPigeonAirlines.Data.Repositories;
-//using UnitedPigeonAirlines.Domain.Concrete;
 using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 using UnitedPigeonAirlines.WebUI.Models;
@@ -47,20 +43,14 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
                     pigeon.ImageData = new byte[image.ContentLength];
                     image.InputStream.Read(pigeon.ImageData, 0, image.ContentLength);
                 }
-                if (pigeon.PigeonId != 0)
-                {
-                    repository.SavePigeon(repository.GetPigeon(pigeon.PigeonId));
-                }
-                else
-                {
+                
                     repository.SavePigeon(pigeon.ToPigeon());
-                }
+                
                 TempData["message"] = string.Format("Changes in pigeon \"{0}\" info were saved", pigeon.PigeonName);
                 return RedirectToAction("Index");
             }
             else
             {
-                // Что-то не так со значениями данных
                 return View(pigeon);
             }
         }

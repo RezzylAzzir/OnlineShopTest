@@ -47,6 +47,7 @@ namespace UnitedPigeonAirlines.WebUI.Infrastructure
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
             kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
+            kernel.Bind<IPriceCalculationStrategy>().To<OnThirdDiscountCalculationStrategy>();
         }
     }
 }

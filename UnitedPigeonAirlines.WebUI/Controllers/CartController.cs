@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using UnitedPigeonAirlines.Domain.Abstract;
 using UnitedPigeonAirlines.WebUI.Models;
 using UnitedPigeonAirlines.EF.Repositories;
-using UnitedPigeonAirlines.Domain.Concrete;
+using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
 using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 
@@ -18,12 +18,16 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
         private EFPigeonRepository repository;
         private EFOrderRepository orderRepository;
         private IOrderProcessor orderProcessor;
-        public CartController(EFPigeonRepository repo,EFOrderRepository orepo, IOrderProcessor processor/*, IDBOrderProcessor dBOrderProcessor*/)
+        private IPriceCalculationStrategy priceCalc;
+        CartIndexViewModel indexViewModel = new CartIndexViewModel();
+
+
+        public CartController(EFPigeonRepository repo,EFOrderRepository orepo, IOrderProcessor processor, IPriceCalculationStrategy priceCalculation)
         {
             repository = repo;
             orderRepository = orepo;
             orderProcessor = processor;
-            //dbProcessor = dBOrderProcessor;
+            priceCalc = priceCalculation;
         }
         public ViewResult Checkout()
         {
@@ -32,13 +36,17 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
 
             public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel
+            
+            
+            indexViewModel.Cart = cart;
+            indexViewModel.ReturnUrl = returnUrl;
+            indexViewModel.PigeonsInCart = cart.Lines.Select(x => new PigeonInCartDTO(x, repository.GetPigeon(x.PigeonId))).ToList();
+            foreach(var pig in indexViewModel.PigeonsInCart)
             {
-                Cart = cart,
-                PigeonsInCart = cart.Lines.Select(x => new PigeonInCartDTO(x,repository.GetPigeon(x.PigeonId))).ToList(),
+                pig.Price = priceCalc.CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
                 
-                ReturnUrl = returnUrl
-            });
+            }
+            return View(indexViewModel);
         }
 
         public RedirectToRouteResult AddToCart(Cart cart, int PigeonId, string returnUrl)
@@ -50,6 +58,7 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
             {
                 cart.AddItem(Pigeon, 1);
             }
+            
             return RedirectToAction("Index", new { returnUrl });
         }
 
@@ -69,8 +78,15 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
             return PartialView(cart);
         }
         [HttpPost]
-        public ViewResult Checkout(Order order, Cart cart, ShippingDetails shippingDetails)
+        public ViewResult Checkout( Cart cart, ShippingDetails shippingDetails)
         {
+            decimal Subtotal = 0;
+            indexViewModel.PigeonsInCart = cart.Lines.Select(x => new PigeonInCartDTO(x, repository.GetPigeon(x.PigeonId))).ToList();
+            foreach (var pig in indexViewModel.PigeonsInCart)
+            {
+                pig.Price = priceCalc.CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
+                Subtotal += pig.Price;
+            }
             if (cart.Lines.Count() == 0)
             {
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
@@ -78,6 +94,7 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                Order order = new Order();
                 cart.FillOrder(order);
                 order.City = shippingDetails.City;
                 order.Country = shippingDetails.Country;
@@ -86,9 +103,9 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
                 order.Line2 = shippingDetails.Line2;
                 order.Line3 = shippingDetails.Line3;
                 order.Name = shippingDetails.Name;
-                orderProcessor.ProcessOrder(order);
+                order.SummaryPrice = Subtotal;
                 orderRepository.SaveOrder(order);
-                //dbProcessor.SaveOrder(cart, shippingDetails);
+                orderProcessor.ProcessOrder(order);
                 cart.Clear();
                 return View("Completed");
             }

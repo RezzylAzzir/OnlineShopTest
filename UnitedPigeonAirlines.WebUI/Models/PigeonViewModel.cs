@@ -11,10 +11,11 @@ namespace UnitedPigeonAirlines.WebUI.Models
         public PigeonViewModel Pigeon {get;set;}
 
         public int Quantity { get; set; }
-
+        public decimal Price { get; set; }
         public PigeonInCartDTO(CartLine cartLine, Pigeon pigeon) {
             Pigeon = new PigeonViewModel(pigeon);
             Quantity = cartLine.Quantity;
+            Price = 0;
         }
     }
 
@@ -57,16 +58,6 @@ namespace UnitedPigeonAirlines.WebUI.Models
             ImageMimeType = pigeon.ImageMimeType;
 
         }
-        //public PigeonDTO(int pigeonId)
-        //{
-        //   PigeonId =  repo.GetPigeon(pigeonId).PigeonId;
-        //    PigeonName = repo.GetPigeon(pigeonId).PigeonName;
-        //    Description = repo.GetPigeon(pigeonId).Description;
-        //    Category = repo.GetPigeon(pigeonId).Category;
-        //    BasicPrice = repo.GetPigeon(pigeonId).BasicPrice;
-        //    ImageData = repo.GetPigeon(pigeonId).ImageData;
-        //    ImageMimeType = repo.GetPigeon(pigeonId).ImageMimeType;
-        //}
         public Pigeon ToPigeon()
         {
             

@@ -5,21 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using UnitedPigeonAirlines.Data.Repositories;
 using UnitedPigeonAirlines.Data.Entities.CartAggregate;
-using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
+using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
+using System.Data.Entity;
 
 namespace UnitedPigeonAirlines.EF.Repositories
 {
     public class EFOrderRepository : IOrderRepository
     {
-        EFDbContext context = new EFDbContext();
+
         public List<Order> GetAllOrders()
         {
-            return context.Orders.ToList();
+            using (EFDbContext context = new EFDbContext())
+            {
+
+                return context.Orders.Include(x=>x.Pigeons).ToList();
+            }
         }
         public void SaveOrder(Order order)
         {
-            context.Orders.Add(order);
-            context.SaveChanges();
+            using (EFDbContext context = new EFDbContext())
+            {
+                context.Orders.Add(order);
+                context.SaveChanges();
+            }
         }
     }
 }

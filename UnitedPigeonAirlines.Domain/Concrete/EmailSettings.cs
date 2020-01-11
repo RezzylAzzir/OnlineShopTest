@@ -1,9 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Text;
-using UnitedPigeonAirlines.Domain.Abstract;
-//using UnitedPigeonAirlines.Domain.Entities;
-using UnitedPigeonAirlines.Domain.Concrete;
 
 namespace UnitedPigeonAirlines.Domain.Concrete
 {
@@ -19,7 +16,4 @@ namespace UnitedPigeonAirlines.Domain.Concrete
         public bool WriteAsFile = true;
         public string FileLocation = @"c:\EMAILS";
     }
-
-    // notification order processor
-    // persistance order processor
 }

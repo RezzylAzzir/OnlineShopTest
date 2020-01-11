@@ -6,8 +6,6 @@ namespace UnitedPigeonAirlines.WebUI.Models
 {
     public class ShippingDetails
     {
-        //[HiddenInput(DisplayValue = false)]
-        //public int ShippingId { get; set; }
         [Required(ErrorMessage = "Type your name")]
         public string Name { get; set; }
 
@@ -28,6 +26,5 @@ namespace UnitedPigeonAirlines.WebUI.Models
         public string Country { get; set; }
 
         public bool GiftWrap { get; set; }
-        //Order Order { get; set; }
     }
 }

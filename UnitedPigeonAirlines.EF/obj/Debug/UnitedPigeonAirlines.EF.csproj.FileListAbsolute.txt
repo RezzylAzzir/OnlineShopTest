@@ -15,3 +15,4 @@ C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeon
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.Migrations.Edit1.resources
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.csproj.GenerateResource.cache
 C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.Migrations.Edit2.resources
+C:\VisualPRJ\UnitedPigeonAirlines\UnitedPigeonAirlines.EF\obj\Debug\UnitedPigeonAirlines.EF.Migrations.Edit3.resources

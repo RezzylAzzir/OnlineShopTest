@@ -26,7 +26,7 @@
                 <td class="text-left">@line.Pigeon.PigeonName</td>
                 <td class="text-right">@line.Pigeon.BasicPrice.ToString("# UAH")</td>
                 <td class="text-right">
-                    @((line.Quantity * line.Pigeon.BasicPrice).ToString("# UAH"))
+                    @((line.Price).ToString("# UAH"))
                 </td>
                 <td>
                     @using (Html.BeginForm("RemoveFromCart", "Cart"))
@@ -46,8 +46,8 @@
                 @{decimal Subtotal = 0;}
                 @foreach (var line in Model.PigeonsInCart)
                 {
-                    Subtotal= Subtotal + line.Quantity * line.Pigeon.BasicPrice;
-}
+                    Subtotal += line.Price ;
+                }
                 @Subtotal.ToString("# UAH")
 
             </td>

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UnitedPigeonAirlines.Data.Entities;
+using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 
-namespace UnitedPigeonAirlines.Data.Entities.PigeonAggregate
+namespace UnitedPigeonAirlines.Data.Entities.OrderAggregate
 {
     public class Order
     {
@@ -16,10 +16,7 @@ namespace UnitedPigeonAirlines.Data.Entities.PigeonAggregate
         public string City { get; set; }
         public string Country { get; set; }
         public bool GiftWrap { get; set; }
-        //public decimal SummaryPrice { get; set; }
-        //public string PigeonsIds { get; set; }
-
+        public decimal SummaryPrice { get; set; }
         public List<PigeonInOrder> Pigeons { get; set; }
-        
     }
 }

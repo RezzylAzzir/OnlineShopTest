@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
+using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 
 namespace UnitedPigeonAirlines.Domain.Abstract
 {
-    public interface IOrderProcessor
+    public interface IPriceCalculationStrategy
     {
-        void ProcessOrder(Order order);
-    }
+        decimal CalculatePrice(Cart cart,CartLine line);
+    }   
 }

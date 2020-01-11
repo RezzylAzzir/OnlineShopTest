@@ -8,7 +8,6 @@ namespace UnitedPigeonAirlines.Data.Entities.PigeonAggregate
 {
     public class Pigeon
     {
-       
         public int PigeonId { get; set; }
         public string PigeonName { get; set; }
         public string Description { get; set; }
@@ -16,7 +15,5 @@ namespace UnitedPigeonAirlines.Data.Entities.PigeonAggregate
         public decimal BasicPrice { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
-        
-        //public Dictionary<int, int> pepegeons { get; set; }
     }
 }

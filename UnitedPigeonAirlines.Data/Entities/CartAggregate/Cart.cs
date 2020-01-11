@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
+using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
 
 
 namespace UnitedPigeonAirlines.Data.Entities.CartAggregate
@@ -35,20 +36,12 @@ namespace UnitedPigeonAirlines.Data.Entities.CartAggregate
         {
             lineCollection.RemoveAll(l => l.PigeonId == Pigeon.PigeonId);
         }
-
-        //public int QuantityReturner(Pigeon pigeon)
-        //{
-
-
-        //    return lineCollection.FirstOrDefault(x=>x.PigeonId==(pigeon.PigeonId-1)).Quantity;
-
-        //}
         public void Clear()
         {
             lineCollection.Clear();
         }
 
-        public IEnumerable<CartLine> Lines
+        public List<CartLine> Lines
         {
             get { return lineCollection; }
         }
@@ -62,16 +55,9 @@ namespace UnitedPigeonAirlines.Data.Entities.CartAggregate
                 order.Pigeons.Add(new PigeonInOrder()
                 {
                     PigeonId = line.PigeonId,
-                    //OrderId = order.OrderId,
                     Quantity = line.Quantity,
                 });
             }
-            
-                
-
-            
         }
     }
-
-
 }

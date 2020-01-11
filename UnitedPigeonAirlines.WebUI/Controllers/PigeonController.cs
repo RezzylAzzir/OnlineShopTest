@@ -24,7 +24,7 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
         {
             Pigeon pigeon = repository.GetPigeon(pigeonId);
             
-                //.FirstOrDefault(g => g.PigeonId == pigeonId);
+               
 
             if (pigeon != null)
             {
@@ -39,19 +39,12 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
         {
             PigeonListViewModel model = new PigeonListViewModel
             {
-                Pigeons = repository.GetByCategory(category, page, pageSize), /*  repository.Pigeons
-                    .Where(p => category == null || p.Category == category)
-                    .OrderBy(pigeon => pigeon.PigeonId)
-                    .Skip((page - 1) * pageSize)
-                    .Take(pageSize),*/
+                Pigeons = repository.GetByCategory(category, page, pageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
                     TotalItems = repository.Count(category)
-                    /*
-                repository.Pigeons.Count() :
-                repository.Pigeons.Where(pigeon => pigeon.Ceategory == category).Count()*/
                 },
                 CurrentCategory = category
             };
