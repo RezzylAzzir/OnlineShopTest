@@ -36,18 +36,12 @@ namespace UnitedPigeonAirlines.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            
             kernel.Bind<IPigeonRepository>().To<EFPigeonRepository>();
-            EmailSettings emailSettings = new EmailSettings
-            {
-                WriteAsFile = bool.Parse(ConfigurationManager
-                    .AppSettings["Email.WriteAsFile"] ?? "false")
-            };
-
-            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-                .WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IConfiguration>().To<IStandartConfiguration>();
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>();
+            kernel.Bind<IOrderRepository>().To<EFOrderRepository>();
             kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
-            kernel.Bind<IPriceCalculationStrategy>().To<OnThirdDiscountCalculationStrategy>();
+            kernel.Bind<IFactoryCaclulation>().To<PriceCalculationFactory>();
         }
     }
 }

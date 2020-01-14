@@ -6,16 +6,17 @@ using System.Web.Mvc;
 using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.WebUI.Models;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
+using UnitedPigeonAirlines.Data.Repositories;
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
 {
     public class PigeonController : Controller
     {
-        private EFPigeonRepository repository;
+        private IPigeonRepository repository;
         public int pageSize = 4;
         
         
-        public PigeonController(EFPigeonRepository repo)
+        public PigeonController(IPigeonRepository repo)
         {
             repository = repo;
         }

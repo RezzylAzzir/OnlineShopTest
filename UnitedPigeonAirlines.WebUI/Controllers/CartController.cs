@@ -9,25 +9,28 @@ using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.Data.Entities.OrderAggregate;
 using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
+using UnitedPigeonAirlines.Data.Repositories;
 
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
 {
     public class CartController : Controller
     {
-        private EFPigeonRepository repository;
-        private EFOrderRepository orderRepository;
+        private IPigeonRepository repository;
+        private IOrderRepository orderRepository;
         private IOrderProcessor orderProcessor;
-        private IPriceCalculationStrategy priceCalc;
-        CartIndexViewModel indexViewModel = new CartIndexViewModel();
+        private IFactoryCaclulation priceCalcFactory;
+        private IConfiguration configuration;
+        
 
 
-        public CartController(EFPigeonRepository repo,EFOrderRepository orepo, IOrderProcessor processor, IPriceCalculationStrategy priceCalculation)
+        public CartController(IPigeonRepository repo,IOrderRepository orepo, IOrderProcessor processor, IFactoryCaclulation priceCalculation, IConfiguration config)
         {
             repository = repo;
             orderRepository = orepo;
             orderProcessor = processor;
-            priceCalc = priceCalculation;
+            priceCalcFactory = priceCalculation;
+            configuration = config;
         }
         public ViewResult Checkout()
         {
@@ -36,14 +39,14 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
 
             public ViewResult Index(Cart cart, string returnUrl)
         {
-            
-            
+
+            CartIndexViewModel indexViewModel = new CartIndexViewModel();
             indexViewModel.Cart = cart;
             indexViewModel.ReturnUrl = returnUrl;
             indexViewModel.PigeonsInCart = cart.Lines.Select(x => new PigeonInCartDTO(x, repository.GetPigeon(x.PigeonId))).ToList();
             foreach(var pig in indexViewModel.PigeonsInCart)
             {
-                pig.Price = priceCalc.CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
+                pig.Price = priceCalcFactory.Create(configuration.ChosenStrategyName).CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
                 
             }
             return View(indexViewModel);
@@ -80,11 +83,12 @@ namespace UnitedPigeonAirlines.WebUI.Controllers
         [HttpPost]
         public ViewResult Checkout( Cart cart, ShippingDetails shippingDetails)
         {
+            CartIndexViewModel indexViewModel = new CartIndexViewModel();
             decimal Subtotal = 0;
             indexViewModel.PigeonsInCart = cart.Lines.Select(x => new PigeonInCartDTO(x, repository.GetPigeon(x.PigeonId))).ToList();
             foreach (var pig in indexViewModel.PigeonsInCart)
             {
-                pig.Price = priceCalc.CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
+                pig.Price = priceCalcFactory.Create(configuration.ChosenStrategyName).CalculatePrice(cart, cart.Lines.Find(x => x.PigeonId == pig.Pigeon.PigeonId));
                 Subtotal += pig.Price;
             }
             if (cart.Lines.Count() == 0)

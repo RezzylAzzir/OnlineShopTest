@@ -13,20 +13,21 @@ namespace UnitedPigeonAirlines.Domain.Concrete
     public class DuplicatePigeonsCalculateStrategy:IPriceCalculationStrategy
     {
         private IPigeonRepository pigrepo;
-        public DuplicatePigeonsCalculateStrategy(IPigeonRepository pigeonRepository)
+        public DuplicatePigeonsCalculateStrategy(IPigeonRepository pigeonrepo)
         {
-            pigrepo = pigeonRepository;
-
+            pigrepo = pigeonrepo;
         }
         public decimal CalculatePrice(Cart cart,CartLine line)
         {
-            if (line.Quantity > 1)
+            int quant = line.Quantity;
+            decimal Price = pigrepo.GetPigeon(line.PigeonId).BasicPrice;
+            if (quant > 1)
             {
-                return pigrepo.GetPigeon(line.PigeonId).BasicPrice + ((pigrepo.GetPigeon(line.PigeonId).BasicPrice/2) * (line.Quantity-1));
+                return Price + ((Price/2) * (quant-1));
             }
             else
             {
-                return pigrepo.GetPigeon(line.PigeonId).BasicPrice;
+                return Price;
             }
         }
     }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\CartAggregate\Cart.cs" />
     <Compile Include="Entities\CartAggregate\CartLine.cs" />
+    <Compile Include="Entities\EmailAggregate\EmailSettings.cs" />
     <Compile Include="Entities\OrderAggregate\Order.cs" />
     <Compile Include="Entities\PigeonAggregate\Pigeon.cs" />
     <Compile Include="Entities\OrderAggregate\PigeonDTO.cs" />

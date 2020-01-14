@@ -72,12 +72,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IConfiguration.cs" />
+    <Compile Include="Abstract\IFactoryCaclulation.cs" />
     <Compile Include="Abstract\IPriceCalculationStrategy.cs" />
     <Compile Include="Abstract\IOrderProcessor.cs" />
+    <Compile Include="Concrete\PriceCalculationFactory.cs" />
     <Compile Include="Concrete\DefaultCalculationStrategy.cs" />
     <Compile Include="Concrete\DuplicatePigeonsCalculateStrategy.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
-    <Compile Include="Concrete\EmailSettings.cs" />
+    <Compile Include="Concrete\IStandartConfiguration.cs" />
     <Compile Include="Concrete\OnThirdPigeonDiscountCalculationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

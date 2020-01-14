@@ -4,15 +4,16 @@ using System.Web;
 using UnitedPigeonAirlines.EF.Repositories;
 using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 using UnitedPigeonAirlines.WebUI.Models;
+using UnitedPigeonAirlines.Data.Repositories;
 
 namespace UnitedPigeonAirlines.WebUI.Controllers
 {
     [Authorize]
     public class AdminController : Controller
     {
-        EFPigeonRepository repository;
+        IPigeonRepository repository;
 
-        public AdminController(EFPigeonRepository repo)
+        public AdminController(IPigeonRepository repo)
         {
             repository = repo;
         }

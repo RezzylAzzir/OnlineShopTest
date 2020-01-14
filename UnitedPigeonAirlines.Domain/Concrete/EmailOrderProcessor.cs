@@ -8,6 +8,7 @@ using UnitedPigeonAirlines.Data.Entities.PigeonAggregate;
 using System.Linq;
 using UnitedPigeonAirlines.EF.Repositories;
 using System.Data.Entity;
+using UnitedPigeonAirlines.Data.Repositories;
 using System.Collections.Generic;
 
 
@@ -16,14 +17,14 @@ namespace UnitedPigeonAirlines.Domain.Concrete
     public class EmailOrderProcessor : IOrderProcessor
     {
         
-        private EmailSettings emailSettings;
-        EFPigeonRepository repository;
+        private IConfiguration configuration;
+        private IPigeonRepository repository;
 
        
 
-        public EmailOrderProcessor(EmailSettings settings, EFPigeonRepository repo)
+        public EmailOrderProcessor(IConfiguration conf, IPigeonRepository repo)
         {
-            emailSettings = settings;
+            configuration = conf;
             repository = repo;
         }
 
@@ -34,12 +35,12 @@ namespace UnitedPigeonAirlines.Domain.Concrete
             System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("ua-UA");
             using (var smtpClient = new SmtpClient())
             {
-                smtpClient.EnableSsl = emailSettings.UseSsl;
-                smtpClient.Host = emailSettings.ServerName;
-                smtpClient.Port = emailSettings.ServerPort;
+                smtpClient.EnableSsl = configuration.emailSettings.UseSsl;
+                smtpClient.Host = configuration.emailSettings.ServerName;
+                smtpClient.Port = configuration.emailSettings.ServerPort;
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials
-                    = new NetworkCredential(emailSettings.Username, emailSettings.Password);
+                    = new NetworkCredential(configuration.emailSettings.Username, configuration.emailSettings.Password);
 
              
                 StringBuilder body = new StringBuilder()
@@ -70,8 +71,8 @@ namespace UnitedPigeonAirlines.Domain.Concrete
                         order.GiftWrap ? "Yes" : "No");
 
                 MailMessage mailMessage = new MailMessage(
-                                       emailSettings.MailFromAddress,	// От кого
-                                       emailSettings.MailToAddress,		// Кому
+                                       configuration.emailSettings.MailFromAddress,	// От кого
+                                       configuration.emailSettings.MailToAddress,		// Кому
                                        "New order shipped!",		// Тема
                                        body.ToString()); 				// Тело письма
 

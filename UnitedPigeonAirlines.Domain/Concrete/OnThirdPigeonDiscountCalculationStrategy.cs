@@ -20,25 +20,27 @@ namespace UnitedPigeonAirlines.Domain.Concrete
         
         public decimal CalculatePrice(Cart cart, CartLine line)
         {
-            
-                int i = cart.Lines.Count();
-                int j = cart.Lines.FindIndex(x=>x.PigeonId==line.PigeonId);
-                if (i>2 && (1+j) % 3==0)
+            int quant = line.Quantity;
+            int i = cart.Lines.Count();
+            int j = cart.Lines.FindIndex(x => x.PigeonId == line.PigeonId);
+            decimal CurrentPigeonPrice = pigrepo.GetPigeon(cart.Lines[j].PigeonId).BasicPrice;
+            if (i > 2 && (1 + j) % 3 == 0)
+            {
+                decimal FirstPigeonPrice = pigrepo.GetPigeon(cart.Lines[j - 2].PigeonId).BasicPrice;
+                decimal SecondPigeonPrice = pigrepo.GetPigeon(cart.Lines[j - 1].PigeonId).BasicPrice;
+                if (FirstPigeonPrice > CurrentPigeonPrice && SecondPigeonPrice > CurrentPigeonPrice)
                 {
-
-                    if (pigrepo.GetPigeon(cart.Lines[j - 1].PigeonId).BasicPrice > pigrepo.GetPigeon(cart.Lines[j].PigeonId).BasicPrice && pigrepo.GetPigeon(cart.Lines[j - 2].PigeonId).BasicPrice > pigrepo.GetPigeon(cart.Lines[j].PigeonId).BasicPrice)
-                    {
-                        return pigrepo.GetPigeon(line.PigeonId).BasicPrice / 2 + (pigrepo.GetPigeon(line.PigeonId).BasicPrice * (line.Quantity - 1));
-                    }
-                    else
-                    {
-                        return pigrepo.GetPigeon(line.PigeonId).BasicPrice * line.Quantity;
-                    }
+                    return CurrentPigeonPrice / 2 + (CurrentPigeonPrice * (quant - 1));
                 }
                 else
                 {
-                    return pigrepo.GetPigeon(line.PigeonId).BasicPrice * line.Quantity;
+                    return CurrentPigeonPrice * quant;
                 }
+            }
+            else
+            {
+                return CurrentPigeonPrice * quant;
+            }
 
         }
     }
