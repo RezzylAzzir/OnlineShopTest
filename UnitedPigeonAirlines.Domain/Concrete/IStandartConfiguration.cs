@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnitedPigeonAirlines.Domain.Abstract;
 using UnitedPigeonAirlines.Data.Entities.EmailAggregate;
+using System.Web.Configuration;
 
 namespace UnitedPigeonAirlines.Domain.Concrete
 {
@@ -14,18 +15,20 @@ namespace UnitedPigeonAirlines.Domain.Concrete
         public EmailSettings emailSettings { get; set; }
         public IStandartConfiguration()
         {
-            ChosenStrategyName = "DefaultCalculationStrategy";
+            
+            //ChosenStrategyName = "DefaultCalculationStrategy";
+            ChosenStrategyName = WebConfigurationManager.AppSettings["ChosenStrategyName"];
             emailSettings = new EmailSettings
             {
-                MailToAddress = "egoppanchenko@gmail.com",
-                MailFromAddress = "UnitedPigeonAirlines@example.com",
-                UseSsl = true,
-                Username = "MySmtpUsername",
-                Password = "MySmtpPassword",
-                ServerName = "smtp.example.com",
-                ServerPort = 587,
-                WriteAsFile = false,
-                FileLocation = @"c:\EMAILS",
+                MailToAddress = WebConfigurationManager.AppSettings["MailToAddress"],
+                MailFromAddress = WebConfigurationManager.AppSettings["MailFromAddress"],
+                UseSsl = Convert.ToBoolean(WebConfigurationManager.AppSettings["UseSsl"]),
+                Username = WebConfigurationManager.AppSettings["Username"],
+                Password = WebConfigurationManager.AppSettings["Password"],
+                ServerName = WebConfigurationManager.AppSettings["ServerName"],
+                ServerPort = Convert.ToInt32(WebConfigurationManager.AppSettings["ServerPort"]),
+                WriteAsFile = Convert.ToBoolean(WebConfigurationManager.AppSettings["WriteAsFile"]),
+                FileLocation = WebConfigurationManager.AppSettings["FileLocation"],
             };
         }
     }

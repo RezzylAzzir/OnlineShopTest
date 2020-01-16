@@ -10,10 +10,10 @@ using UnitedPigeonAirlines.Data.Entities.CartAggregate;
 namespace UnitedPigeonAirlines.Domain.Concrete
 {
     //Скидка на третьего голубя 50% при покупке двух дорогих до этого, акция работает один раз на каждые 3 вида голубей (2 дорогих и 1 дешевый)
-    public class OnThirdDiscountCalculationStrategy: IPriceCalculationStrategy
+    public class OnThirdPigeonDiscountCalculationStrategy: IPriceCalculationStrategy
     {
         private IPigeonRepository pigrepo;
-        public OnThirdDiscountCalculationStrategy(IPigeonRepository pigeonRepository)
+        public OnThirdPigeonDiscountCalculationStrategy(IPigeonRepository pigeonRepository)
         {
             pigrepo = pigeonRepository;
         }

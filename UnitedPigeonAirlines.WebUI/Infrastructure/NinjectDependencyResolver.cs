@@ -36,6 +36,7 @@ namespace UnitedPigeonAirlines.WebUI.Infrastructure
 
         private void AddBindings()
         {
+            
             kernel.Bind<IPigeonRepository>().To<EFPigeonRepository>();
             kernel.Bind<IConfiguration>().To<IStandartConfiguration>();
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>();

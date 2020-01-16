@@ -27,8 +27,8 @@ namespace UnitedPigeonAirlines.Domain.Concrete
                 case "DuplicatePigeonCalculationStrategy":
                     priceCalculation = new DuplicatePigeonsCalculateStrategy(pigeonRepository);
                     break;
-                case "OnThirdPigeonDiscountCalculation":
-                    priceCalculation = new OnThirdDiscountCalculationStrategy(pigeonRepository);
+                case "OnThirdPigeonDiscountCalculationStrategy":
+                    priceCalculation = new OnThirdPigeonDiscountCalculationStrategy(pigeonRepository);
                     break;
             }
             return priceCalculation;
